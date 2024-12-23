@@ -34,7 +34,7 @@ const ModalAddMarker: FC = () => {
   const dispatch = useAppDispatch();
 
   const onSubmit: SubmitHandler<IGeoItem> = (data) => {
-    dispatch(addGeoItem(data));
+    dispatch(addGeoItem({ ...data, id: Math.floor(Math.random() * 100) + 1 }));
     reset();
     dispatch(clearAllStep());
   };

@@ -20,7 +20,6 @@ export const geo = api.injectEndpoints({
               .AddressLine,
           latitude: geoObj.Point.pos.split(" ")[1],
           longitude: geoObj.Point.pos.split(" ")[0],
-          id: Math.floor(Math.random() * 100) + 1,
         };
       },
     }),

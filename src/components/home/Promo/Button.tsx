@@ -7,26 +7,24 @@ import { useAppDispatch } from "@/hooks/hook";
 import { stepTo } from "@/store/modal/modalSlice";
 
 const Button: FC<{ item: IGeoItem }> = ({ ...props }) => {
-  const buttonRef = useRef();
+  const buttonRef = useRef<HTMLButtonElement>(null);
   const dispatch = useAppDispatch();
   const { item } = props;
 
-  const handleOneClick = (e, id: number) => {
-    dispatch(stepTo({ edit: { step: 1, editId: id } }));
-    e && e.stopPropagation();
+  const handleOneClick = () => {
+    dispatch(stepTo({ edit: { step: 1, editId: item.id } }));
   };
 
-  const handleDoubleClick = (e, id: number) => {
-    dispatch(stepTo({ del: { step: 1, delId: id } }));
-    e && e.stopPropagation();
+  const handleDoubleClick = () => {
+    dispatch(stepTo({ del: { step: 1, delId: item.id } }));
   };
 
   useDoubleClick({
-    onSingleClick: (e) => {
-      handleOneClick(e, item.id);
+    onSingleClick: () => {
+      handleOneClick();
     },
-    onDoubleClick: (e) => {
-      handleDoubleClick(e, item.id);
+    onDoubleClick: () => {
+      handleDoubleClick();
     },
     ref: buttonRef,
     latency: 250,
