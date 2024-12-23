@@ -5,6 +5,8 @@ import { ITextInput } from "@/UI/form_hook/utils/types";
 export const makeInitialValues = (fields: ITextInput[]) => {
   const object: Record<string, string | number | boolean | [] | any> = {};
 
+  console.log(fields);
+
   fields.forEach((item) => {
     const { init_value } = item;
 
@@ -14,6 +16,10 @@ export const makeInitialValues = (fields: ITextInput[]) => {
 
     switch (item.type) {
       case "text":
+        object[item.name] = init_value || "";
+        break;
+
+      case "hidden":
         object[item.name] = init_value || "";
         break;
 
@@ -36,25 +42,7 @@ export const makeInitialValues = (fields: ITextInput[]) => {
       default:
         object[item.name] = "";
     }
-    // console.log(item);
-
-    // console.log(init_value);
-
-    // if (typeof init_value === "string") {
-    //   console.log(init_value);
-    // }
-
-    // if (typeof item.value === "string" || typeof item.value === "number") {
-    //   if (item.name !== undefined) {
-    //     object[item.name] = item.value.toString();
-    //   }
-    //   // object[item.name] = item.value;
-    // } else if (item.name !== undefined) {
-    //   object[item.name] = "";
-    // }
   });
-
-  // console.log(object);
 
   return object;
 };

@@ -1,9 +1,13 @@
 import { useFormContext } from "react-hook-form";
 
 const useGetFieldData = (name: string) => {
-  const { formState } = useFormContext();
+  const formContext = useFormContext();
 
-  const { errors } = formState;
+  if (!formContext) return { isError: false, error_text: null };
+
+  const {
+    formState: { errors },
+  } = formContext;
 
   const isError = errors[name] ? true : false;
   const error_text = errors[name] ? errors[name].message : null;

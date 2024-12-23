@@ -2,7 +2,6 @@ import { FC } from "react";
 import { Route, Routes } from "react-router-dom";
 import Template from "./templates_pages/Template";
 import HomePage from "./pages/HomePage";
-import RequireAuth from "./hoc/RequireAuth";
 import ModalManager from "./components/modal/ModalManager";
 import { HelmetProvider } from "react-helmet-async";
 import Seo from "./hoc/seo/Seo";
@@ -20,10 +19,6 @@ const App: FC = () => {
       <Routes>
         <Route path="/" element={<Template />}>
           <Route index element={<HomePage />} />
-          <Route
-            path="/private"
-            element={<RequireAuth>{/* <Private /> */ <h1>лк</h1>}</RequireAuth>}
-          />
           <Route path="*" element={<HomePage />} />
         </Route>
       </Routes>

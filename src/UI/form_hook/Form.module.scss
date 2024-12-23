@@ -15,11 +15,11 @@ input[type="checkbox"] {
   --color-label: black;
   --color-input: black;
 
-  --font-size-label: 1rem;
+  --font-size-label: 0.8rem;
   --font-size-input: 1rem;
 
   --border-color: green;
-  --border-color-hover: tomato;
+  --border-color-hover: #c4d1d7;
   --border-input: var(--line) solid var(--border-color);
   --border-radius: 0.62rem;
 
@@ -27,7 +27,7 @@ input[type="checkbox"] {
   --background-input: #fff;
 
   & + .container {
-    margin-top: 0.75rem;
+    // margin-top: 0.75rem;
   }
 
   &--radio {
@@ -45,7 +45,11 @@ input[type="checkbox"] {
     font-weight: 400;
     font-size: var(--font-size-label);
     color: var(--color-label);
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
+
+    &--search {
+      font-size: 2rem;
+    }
   }
 
   &--checkbox {
@@ -349,5 +353,36 @@ input[type="checkbox"] {
       height: 80%;
       color: var(--border);
     }
+  }
+}
+
+.dadata {
+  &__list {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    border-radius: m.torem(18);
+    padding-top: 1.125rem;
+    padding-bottom: 1.125rem;
+    background-color: #fff;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  &__item {
+    background-color: transparent;
+    padding: m.torem(3) 1.125rem;
+    text-align: left;
+    // color: #1d589d;
+    transition: 0.3s;
+    @include m.hocus() {
+      opacity: 0.7;
+    }
+  }
+
+  &__mark {
+    background-color: transparent;
+    // color: #1d589d;
+    color: #f18500;
   }
 }

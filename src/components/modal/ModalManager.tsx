@@ -4,6 +4,9 @@ import ModalError from "./error/ModalError";
 import useGetCurrentModal from "@/hooks/getCurrentModal";
 import { FC } from "react";
 import { EKeys, TModalState } from "@/store/modal/initialState";
+import ModalAddMarker from "./add/ModalAddMarker";
+import ModalDel from "./del/ModalDel";
+import ModalEdit from "./edit/ModalEdit";
 
 interface IModalElements {
   modalState: TModalState | null;
@@ -15,6 +18,15 @@ const ModalElements: FC<IModalElements> = ({ modalState }) => {
   switch (modal) {
     case `${EKeys.AUTH}-1`:
       return <ModalAuth1 />;
+
+    case `${EKeys.ADD}-1`:
+      return <ModalAddMarker />;
+
+    case `${EKeys.EDIT}-1`:
+      return <ModalEdit />;
+
+    case `${EKeys.DEL}-1`:
+      return <ModalDel />;
 
     case EKeys.ERROR:
       return <ModalError />;
