@@ -15,7 +15,7 @@ export const keysArray = Object.values(EKeys);
 export type TModalState = {
   [K in (typeof keysArray)[number]]?:
     | { step: number; delId?: number; editId?: number; data?: IGeoItem }
-    | { text: string };
+    | { text: string; delId?: number; editId?: number; data?: IGeoItem };
 };
 
 interface IInitialState {
