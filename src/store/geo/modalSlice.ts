@@ -20,8 +20,16 @@ const geoArrSlice = createSlice({
         return item;
       });
     },
+
+    getCenter(state, action: PayloadAction<IGeoItem>) {
+      state.center = [
+        Number(action.payload.latitude),
+        Number(action.payload.longitude),
+      ];
+    },
   },
 });
 
-export const { addGeoItem, delGeoItem, editGeoItem } = geoArrSlice.actions;
+export const { addGeoItem, delGeoItem, editGeoItem, getCenter } =
+  geoArrSlice.actions;
 export default geoArrSlice.reducer;

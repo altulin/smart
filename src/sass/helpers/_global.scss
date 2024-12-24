@@ -9,6 +9,10 @@
   // min-width: 0;
 }
 
+* {
+  touch-action: manipulation;
+}
+
 html {
   box-sizing: border-box;
 
