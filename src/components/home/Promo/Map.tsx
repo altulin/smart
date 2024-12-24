@@ -10,10 +10,17 @@ const MapComponent: FC = () => {
   const { geoArr, center } = useAppSelector((state) => state.geo);
 
   return (
-    <YMaps query={{ apikey: `${import.meta.env.VITE_APP_YA_KEY}` }}>
+    <YMaps
+      query={{
+        apikey: `${import.meta.env.VITE_APP_YA_KEY}`,
+      }}
+    >
       <div className={clsx(style.map)}>
         <Map
-          defaultState={{ center, zoom: 9 }}
+          defaultState={{
+            center,
+            zoom: 9,
+          }}
           state={{ center, zoom: 9, controls: [] }}
           style={{
             width: "100%",

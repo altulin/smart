@@ -26,6 +26,15 @@
   gap: 2rem;
   margin-bottom: 2rem;
 
+  @include m.mw(v.$dt) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @include m.mw(v.$tb) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
   &__item {
     display: flex;
     flex-direction: column;

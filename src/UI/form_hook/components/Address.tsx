@@ -1,24 +1,36 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { FC } from "react";
+import { FC, useEffect, useRef } from "react";
 import { AddressSuggestions } from "react-dadata";
 import style from "../Form.module.scss";
 import { ITextInput } from "../utils/types";
 import clsx from "clsx";
-import { useFormContext } from "react-hook-form";
-// import { useLazyGetGeoQuery } from "@/store/rtk/geo";
+import { useController, useFormContext } from "react-hook-form";
 import { useAppDispatch } from "@/hooks/hook";
 import { stepTo } from "@/store/modal/modalSlice";
 
 const Address: FC<ITextInput> = ({ ...props }) => {
   const { name } = props;
   const { register, setError } = useFormContext();
-  // const [getGeo] = useLazyGetGeoQuery();
   const dispatch = useAppDispatch();
+  const suggestionsRef = useRef<AddressSuggestions>(null);
+  const {
+    field: { onChange, value },
+  } = useController({
+    name,
+  });
+
+  useEffect(() => {
+    if (!value) return;
+    dispatch(stepTo({ add: { step: 1, data: value } }));
+
+    if (suggestionsRef.current) {
+      suggestionsRef.current.setInputValue("");
+    }
+  }, [dispatch, value]);
 
   const handleChange = (e: any) => {
     const {
       data: { house, stead },
-      value,
     } = e;
 
     if (!house && !stead) {
@@ -34,21 +46,16 @@ const Address: FC<ITextInput> = ({ ...props }) => {
       });
     }
 
-    dispatch(stepTo({ add: { step: 1, data: value } }));
-
-    // getGeo({ geocode: value })
-    //   .unwrap()
-    //   .then(() => {
-    //     // dispatch(stepTo({ add: { step: 1, data: value } }));
-    //   });
+    onChange(e.value);
   };
 
   return (
     <AddressSuggestions
+      ref={suggestionsRef}
       token={import.meta.env.VITE_APP_DADATA}
       onChange={handleChange}
-      minChars={3}
-      delay={500}
+      minChars={2}
+      delay={100}
       inputProps={{
         className: clsx(style.input),
         ...props,
