@@ -4,6 +4,7 @@ import svgr from "vite-plugin-svgr";
 import autoprefixer from "autoprefixer";
 import { robots } from "vite-plugin-robots";
 import createSvgSpritePlugin from "vite-plugin-svg-sprite";
+import tailwindcss from "tailwindcss";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -21,12 +22,13 @@ export default defineConfig({
     postcss: {
       plugins: [
         autoprefixer({}), // add options if needed
+        tailwindcss(),
       ],
     },
     preprocessorOptions: {
-      scss: {
-        api: "modern-compiler", // or "modern"
-      },
+      // scss: {
+      //   api: "modern-compiler", // or "modern"
+      // },
     },
   },
   resolve: {
