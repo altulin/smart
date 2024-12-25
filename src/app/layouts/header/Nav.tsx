@@ -1,5 +1,4 @@
 import clsx from "clsx";
-import style from "./Header.module.scss";
 import useIsSmallDevice from "../../hooks/IsSmallDevice";
 import { slide as Menu, Props } from "react-burger-menu";
 import { FC } from "react";

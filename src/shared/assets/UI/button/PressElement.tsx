@@ -7,7 +7,6 @@ import {
   IPressHashLink,
 } from "./types";
 import clsx from "clsx";
-import style from "./PressElement.module.scss";
 
 const PressComponent: FC<typeof TPressComponent> = ({ ...props }) => {
   const { label, icon = null, icon_pos = "left" } = props;

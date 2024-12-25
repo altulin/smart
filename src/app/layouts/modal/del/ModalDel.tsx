@@ -1,7 +1,6 @@
 import { FC } from "react";
 import Modal from "../template/Modal";
 import clsx from "clsx";
-import style from "../template/Modal.module.scss";
 import { delGeoItem } from "@/app/store/geo/modalSlice";
 import { clearAllStep } from "@/app/store/modal/modalSlice";
 import { useAppDispatch, useAppSelector } from "@/entities/hooks/hook";

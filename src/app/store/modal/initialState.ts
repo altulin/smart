@@ -24,4 +24,5 @@ interface IInitialState {
 
 export const initialState: IInitialState = {
   modalState: null,
+  // modalState: { add: { step: 1 } },
 };

@@ -1,6 +1,4 @@
-import clsx from "clsx";
 import { FC, InputHTMLAttributes } from "react";
-import style from "../Form.module.scss";
 import useGetFieldData from "../hook/fieldData";
 
 interface IContainer extends InputHTMLAttributes<HTMLInputElement> {
@@ -9,29 +7,16 @@ interface IContainer extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 const Container: FC<IContainer> = ({ ...props }) => {
-  const { children, modifier = null } = props;
+  const { children = null } = props;
   const { isError, error_text } = useGetFieldData(props.name!);
 
   return (
-    <div
-      className={clsx(
-        style.container,
-        modifier && style[`container--${modifier}`],
-      )}
-    >
+    <div className="w-full">
       {children}
 
       {isError && (
-        <div
-          className={clsx(style.error, modifier && style[`error--${modifier}`])}
-        >
-          <span
-            className={clsx(
-              style.error__text,
-              isError && style["error__text--active"],
-              modifier && style[`error__text--${modifier}`],
-            )}
-          >
+        <div className="mt-1">
+          <span className="pl-4 text-sm text-red-600">
             {typeof error_text === "string" ? error_text : null}
           </span>
         </div>

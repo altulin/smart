@@ -1,6 +1,5 @@
 import IconEye from "@/images/sprite/eye.svg";
 import IconEyeOff from "@/images/sprite/eye-off.svg";
-import style from "@/UI/form_hook/Form.module.scss";
 import clsx from "clsx";
 import { FC } from "react";
 import Svg from "@/hoc/Svg";

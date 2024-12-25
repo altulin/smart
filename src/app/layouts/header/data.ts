@@ -1,5 +1,4 @@
 import { Props } from "react-burger-menu";
-import style from "./Header.module.scss";
 
 export const menu_classes: Props = {
   bodyClassName: "no-scroll",

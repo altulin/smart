@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { FC, useEffect, useState } from "react";
 import clsx from "clsx";
-import style from "../Form.module.scss";
 import IconRule from "@/images/sprite/rule.svg";
 import { ITextInput } from "@/UI/form_hook/utils/types";
 import useGetFieldData from "@/UI/form_hook/hook/fieldData";

@@ -1,36 +1,24 @@
-import clsx from "clsx";
+// import clsx from "clsx";
 import { FC } from "react";
-import style from "../Form.module.scss";
 import { ITextInput } from "../utils/types";
+import clsx from "clsx";
 
-const Label: FC<ITextInput> = ({ ...props }) => {
-  const { modifier, label_text, id, children, className, ...input_props } =
-    props;
+const Label: FC<ITextInput> = ({ modifier, ...props }) => {
+  const { label_text, id, children, className, ...input_props } = props;
 
   if (!input_props.name) return;
 
   return (
     <label
-      className={clsx(
-        style.label,
-        modifier && style[`label--${modifier}`],
-        className,
-      )}
       htmlFor={id}
+      className={clsx(`flex w-full flex-col gap-4 ${className}`)}
     >
       {label_text && (
-        <span
-          className={clsx(
-            style.label__text,
-            modifier && style[`label__text--${modifier}`],
-            "underline",
-          )}
-        >
+        <span className={clsx(modifier !== "search" ? "text-2xl" : "text-3xl")}>
           {label_text}
         </span>
       )}
-
-      <div className={clsx(style.input__wrapper)}>{children}</div>
+      <div className="relative">{children}</div>
     </label>
   );
 };

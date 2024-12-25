@@ -1,6 +1,4 @@
-import clsx from "clsx";
 import { FC } from "react";
-import style from "../HomePage.module.scss";
 import { IGeoItem } from "@/app/store/geo/initialState";
 
 import { getCenter } from "@/app/store/geo/modalSlice";
@@ -15,21 +13,25 @@ const Button: FC<{ item: IGeoItem }> = ({ ...props }) => {
   };
 
   return (
-    <button type="button" className={clsx(style.marker)} onClick={handleClick}>
-      <h3 className={clsx(style.marker__title)}>{item.label}</h3>
-      <p className={clsx(style.marker__addr)}>{item.address}</p>
-      <ul className={clsx(style.coordinates)}>
-        <li className={clsx(style.coordinates__item)}>
-          <span className={clsx(style.coordinates__label)}>широта:</span>
-          <span className={clsx(style.coordinates__value)}>
-            {item.latitude}
-          </span>
+    <button
+      type="button"
+      onClick={handleClick}
+      className="hover:opacity-2xl flex grow cursor-pointer flex-col gap-y-2 rounded-2xl bg-[#c4d1d7] p-4 duration-300"
+    >
+      <h3 className="w-full overflow-hidden text-ellipsis text-center text-2xl uppercase">
+        {item.label}
+      </h3>
+      <p className="w-full overflow-hidden text-ellipsis text-left text-xl">
+        {item.address}
+      </p>
+      <ul className="mt-auto flex w-full flex-col gap-y-2">
+        <li className="flex justify-between gap-x-2 text-sm">
+          <span>широта:</span>
+          <span>{item.latitude}</span>
         </li>
-        <li className={clsx(style.coordinates__item)}>
-          <span className={clsx(style.coordinates__label)}>долгота:</span>
-          <span className={clsx(style.coordinates__value)}>
-            {item.longitude}
-          </span>
+        <li className="flex justify-between gap-x-2 text-sm">
+          <span>долгота:</span>
+          <span>{item.longitude}</span>
         </li>
       </ul>
     </button>

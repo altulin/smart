@@ -1,7 +1,6 @@
 import { FC } from "react";
 import { Map, YMaps } from "@pbe/react-yandex-maps";
 import clsx from "clsx";
-import style from "../HomePage.module.scss";
 import { checkArr } from "@/entities/lib/checkArr";
 import PlacemarkComponent from "./PlacemarkComponent";
 import { useAppSelector } from "@/entities/hooks/hook";
@@ -15,7 +14,7 @@ const MapComponent: FC = () => {
         apikey: `${import.meta.env.VITE_APP_YA_KEY}`,
       }}
     >
-      <div className={clsx(style.map)}>
+      <div className={"h-66v relative mt-8 w-full overflow-hidden rounded-2xl"}>
         <Map
           defaultState={{
             center,

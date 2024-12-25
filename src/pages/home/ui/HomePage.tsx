@@ -1,14 +1,12 @@
-import clsx from "clsx";
 import { FC } from "react";
-import style from "./HomePage.module.scss";
 import SearchComponent from "./searchComponent/SearchComponent";
 import GeoArray from "./geoArray/GeoArray";
 import MapComponent from "./mapComponent/Map";
 
 const HomePage: FC = () => {
   return (
-    <section className={clsx(style.promo)}>
-      <div className={clsx(style.promo__inner, "container")}>
+    <section className="px-4 pb-10">
+      <div>
         <SearchComponent />
         <GeoArray />
         <MapComponent />

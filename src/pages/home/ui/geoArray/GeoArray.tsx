@@ -1,7 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import clsx from "clsx";
 import { FC } from "react";
-import style from "../HomePage.module.scss";
 import { checkArr } from "@/entities/lib/checkArr";
 import { IGeoItem } from "@/app/store/geo/initialState";
 import Button from "../button/Button";
@@ -13,9 +11,9 @@ const GeoArray: FC = () => {
   if (!checkArr(geoArr)) return null;
 
   return (
-    <ul className={clsx(style.list)}>
+    <ul className="mt my-8 grid grid-cols-1 gap-8 md:grid-cols-3 lg:grid-cols-4">
       {geoArr.map((item: IGeoItem) => (
-        <li key={item.id} className={clsx(style.list__item)}>
+        <li className="flex flex-col" key={item.id}>
           <Button item={item} />
         </li>
       ))}

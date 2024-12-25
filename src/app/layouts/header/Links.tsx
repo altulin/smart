@@ -1,4 +1,3 @@
-import style from "./Header.module.scss";
 import clsx from "clsx";
 import { FC } from "react";
 import { HashLink } from "react-router-hash-link";

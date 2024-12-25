@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import clsx from "clsx";
 import { FC, useId } from "react";
-import style from "@/UI/form_hook/Form.module.scss";
 import Select from "react-select";
 
 import { ITextInput } from "@/UI/form_hook/utils/types";

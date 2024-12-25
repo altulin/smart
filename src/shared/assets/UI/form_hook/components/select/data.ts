@@ -1,5 +1,4 @@
 import clsx from "clsx";
-import style from "../../Form.module.scss";
 import { EnumTextInput, ITextInput } from "../../utils/types";
 
 export const wrapClass = "select";

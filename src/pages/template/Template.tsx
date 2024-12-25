@@ -1,6 +1,5 @@
 import clsx from "clsx";
 // import Header from "../components/header/Header";
-import style from "./Template.module.scss";
 // import Footer from "@/components/footer/Footer";
 import { Outlet } from "react-router";
 
@@ -8,7 +7,7 @@ const Template = () => {
   return (
     <>
       {/* <Header /> */}
-      <main className={clsx(style.main)}>
+      <main className="container ml-auto mr-auto pt-40 lg:pt-20">
         <Outlet />
       </main>
       {/* <Footer /> */}

@@ -1,5 +1,4 @@
 import Modal from "../template/Modal";
-import style from "../template/Modal.module.scss";
 import clsx from "clsx";
 import { FC } from "react";
 

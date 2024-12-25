@@ -1,4 +1,3 @@
-import style from "./Logo.module.scss";
 import clsx from "clsx";
 import { HashLink } from "react-router-hash-link";
 // import IconLogo from "@/images/header/logo.svg?react";

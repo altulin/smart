@@ -3,7 +3,6 @@ import DatePicker, { registerLocale } from "react-datepicker";
 import { ITextInput } from "@/UI/form_hook/utils/types";
 import "react-datepicker/dist/react-datepicker.css";
 import clsx from "clsx";
-import style from "@/UI/form_hook/Form.module.scss";
 import { ru } from "date-fns/locale/ru";
 import { useController } from "react-hook-form";
 

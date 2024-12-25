@@ -1,7 +1,6 @@
 import { FC, useEffect } from "react";
 import Modal from "../template/Modal";
 import clsx from "clsx";
-import style from "../template/Modal.module.scss";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { addFields } from "../add/data";

@@ -1,5 +1,4 @@
 import clsx from "clsx";
-import style from "./TemplateName.module.scss";
 import { FC } from "react";
 
 const TemplateName: FC = () => {

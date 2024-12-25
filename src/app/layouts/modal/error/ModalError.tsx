@@ -1,6 +1,5 @@
 import { FC } from "react";
 import Modal from "../template/Modal";
-import style from "../template/Modal.module.scss";
 import clsx from "clsx";
 import { useAppSelector } from "@/entities/hooks/hook";
 

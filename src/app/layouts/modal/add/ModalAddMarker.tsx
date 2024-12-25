@@ -1,7 +1,6 @@
 import clsx from "clsx";
 import { FC, useEffect } from "react";
 import Modal from "../template/Modal";
-import style from "../template/Modal.module.scss";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { addFields } from "./data";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -41,19 +40,30 @@ const ModalAddMarker: FC = () => {
 
   return (
     <Modal>
-      <div className={clsx(style.modal__form)}>
-        <h2 className={clsx(style.modal__title)}>Добавить маркер</h2>
+      <div className={""}>
+        <h2
+          className={
+            "mb-4 text-center text-3xl font-semibold uppercase leading-tight md:text-4xl"
+          }
+        >
+          Добавить маркер
+        </h2>
 
         <FormProvider {...methods}>
           <form
-            className={clsx(style.modal__form)}
+            className={clsx("flex flex-col gap-y-4")}
             onSubmit={handleSubmit(onSubmit)}
           >
             {addFields.map((field) => (
               <Field key={field.name} {...field} />
             ))}
 
-            <button className={clsx(style.modal__button)} type="submit">
+            <button
+              className={
+                "rounded-md border bg-[#c4d1d7] px-3 py-4 text-center text-2xl"
+              }
+              type="submit"
+            >
               Добавить
             </button>
           </form>

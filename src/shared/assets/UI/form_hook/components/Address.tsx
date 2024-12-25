@@ -1,12 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { FC, useEffect, useRef } from "react";
 import { AddressSuggestions } from "react-dadata";
-import style from "../Form.module.scss";
 import { ITextInput } from "../utils/types";
-import clsx from "clsx";
+// import clsx from "clsx";
 import { useController, useFormContext } from "react-hook-form";
 import { stepTo } from "@/app/store/modal/modalSlice";
 import { useAppDispatch } from "@/entities/hooks/hook";
+import clsx from "clsx";
+import useGetFieldData from "../hook/fieldData";
 
 const Address: FC<ITextInput> = ({ ...props }) => {
   const { name } = props;
@@ -18,6 +19,7 @@ const Address: FC<ITextInput> = ({ ...props }) => {
   } = useController({
     name,
   });
+  const { isError } = useGetFieldData(name);
 
   useEffect(() => {
     if (!value) return;
@@ -57,13 +59,22 @@ const Address: FC<ITextInput> = ({ ...props }) => {
       minChars={2}
       delay={100}
       inputProps={{
-        className: clsx(style.input),
+        className: clsx(
+          `px-4 py-3 outline-0 border border-gray-300 rounded-md text-xl font-normal color-black w-full transition hover:border-gray-500 focus:border-gray-500 duration-300 bg-white ${
+            isError &&
+            "border-red-500 hover:border-red-500 focus:border-red-500"
+          }`,
+        ),
         ...props,
         ...register(name),
       }}
-      suggestionClassName={clsx(style.dadata__item)}
-      suggestionsClassName={clsx(style.dadata__list)}
-      highlightClassName={clsx(style.dadata__mark)}
+      suggestionClassName={
+        "py-2 px-4 text-xl duration-300 hover:bg-gray-100 w-full text-left"
+      }
+      suggestionsClassName={
+        "flex flex-col mt-4 border border-gray-300 rounded-md items-start py-2  shadow-md"
+      }
+      // highlightClassName={"text-slate-900"}
     />
   );
 };
