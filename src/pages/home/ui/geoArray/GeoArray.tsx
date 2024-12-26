@@ -11,7 +11,7 @@ const GeoArray: FC = () => {
   if (!checkArr(geoArr)) return null;
 
   return (
-    <ul className="mt my-8 grid grid-cols-1 gap-8 md:grid-cols-3 lg:grid-cols-4">
+    <ul className="mt ph:grid-cols-2 emt:grid-cols-3 ldt:grid-cols-4 max_dt:grid-cols-5 tb:grid-cols-2 my-8 grid grid-cols-1 gap-6">
       {geoArr.map((item: IGeoItem) => (
         <li className="flex flex-col" key={item.id}>
           <Button item={item} />

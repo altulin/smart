@@ -1,6 +1,5 @@
 import { FC } from "react";
 import { Map, YMaps } from "@pbe/react-yandex-maps";
-import clsx from "clsx";
 import { checkArr } from "@/entities/lib/checkArr";
 import PlacemarkComponent from "./PlacemarkComponent";
 import { useAppSelector } from "@/entities/hooks/hook";

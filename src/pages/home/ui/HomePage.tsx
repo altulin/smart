@@ -5,7 +5,7 @@ import MapComponent from "./mapComponent/Map";
 
 const HomePage: FC = () => {
   return (
-    <section className="px-4 pb-10">
+    <section className="container ml-auto mr-auto px-4 pb-10">
       <div>
         <SearchComponent />
         <GeoArray />

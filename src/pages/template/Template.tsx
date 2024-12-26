@@ -7,7 +7,7 @@ const Template = () => {
   return (
     <>
       {/* <Header /> */}
-      <main className="container ml-auto mr-auto pt-40 lg:pt-20">
+      <main className="grow pt-40">
         <Outlet />
       </main>
       {/* <Footer /> */}
