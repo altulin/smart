@@ -13,10 +13,10 @@ const MapComponent: FC = () => {
         apikey: `${import.meta.env.VITE_APP_YA_KEY}`,
       }}
     >
-      <div className={"h-66v relative mt-8 w-full overflow-hidden rounded-2xl"}>
+      <div className={"relative mt-8 h-66v w-full overflow-hidden rounded-2xl"}>
         <Map
           defaultState={{
-            center,
+            center: [55.75, 37.57],
             zoom: 9,
           }}
           state={{ center, zoom: 9, controls: [] }}

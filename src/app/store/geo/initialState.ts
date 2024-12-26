@@ -9,6 +9,5 @@ export interface IGeoItem {
 
 export const initialState: { geoArr: IGeoItem[] | []; center: number[] } = {
   geoArr: [],
-
   center: [55.75, 37.57],
 };
