@@ -9,8 +9,6 @@ const Button: FC<{ item: IGeoItem }> = ({ ...props }) => {
   const dispatch = useAppDispatch();
   const { item } = props;
 
-  console.log(item);
-
   const handleClick = () => {
     dispatch(getCenter(item));
   };
