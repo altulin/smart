@@ -1,22 +1,21 @@
 import { FC } from "react";
-import { FormProvider, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { searchField } from "./api";
 import Field from "@/shared/assets/UI/form_hook/hoc/Field";
+import { Form } from "@/components/ui/form";
 
 const SearchComponent: FC = () => {
-  const { ...methods } = useForm({
+  const form = useForm({
     defaultValues: { search: "" },
     mode: "onChange",
   });
 
-  // const {} = methods;
-
   return (
-    <FormProvider {...methods}>
+    <Form {...form}>
       <form>
         <Field {...searchField}></Field>
       </form>
-    </FormProvider>
+    </Form>
   );
 };
 export default SearchComponent;

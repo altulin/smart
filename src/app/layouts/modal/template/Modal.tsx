@@ -1,9 +1,9 @@
 import ModalPortal from "../ModalPortal";
-import Icon from "@/shared/assets/images/svg/menuClose.svg?react";
 import { clearAllStep } from "@/app/store/modal/modalSlice";
 import { useClickAway } from "@uidotdev/usehooks";
 import { FC, ReactNode, RefObject, useCallback, useEffect } from "react";
 import { useAppDispatch } from "@/entities/hooks/hook";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 interface IModal {
   children: ReactNode;
@@ -39,26 +39,11 @@ const Modal: FC<IModal> = ({ children }) => {
 
   return (
     <ModalPortal>
-      <div
-        className={
-          "fixed left-0 top-0 z-10 flex h-full w-full items-center justify-center overflow-y-auto bg-black/50 px-4 py-4 backdrop-blur-sm md:py-20"
-        }
-      >
-        <div
-          ref={ref as RefObject<HTMLDivElement>}
-          className={
-            "relative h-max w-full overflow-hidden rounded-2xl bg-white px-8 py-10 md:w-1/2 lg:w-1/3"
-          }
-        >
-          <button
-            className={"absolute right-2 top-2 h-10 w-10 text-black"}
-            onClick={() => dispatch(clearAllStep())}
-          >
-            <Icon />
-          </button>
+      <Dialog open onOpenChange={() => dispatch(clearAllStep())}>
+        <DialogContent ref={ref as RefObject<HTMLDivElement>}>
           {children}
-        </div>
-      </div>
+        </DialogContent>
+      </Dialog>
     </ModalPortal>
   );
 };

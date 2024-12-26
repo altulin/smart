@@ -3,37 +3,63 @@ import { IGeoItem } from "@/app/store/geo/initialState";
 
 import { getCenter } from "@/app/store/geo/modalSlice";
 import { useAppDispatch } from "@/entities/hooks/hook";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const Button: FC<{ item: IGeoItem }> = ({ ...props }) => {
   const dispatch = useAppDispatch();
   const { item } = props;
 
+  console.log(item);
+
   const handleClick = () => {
     dispatch(getCenter(item));
   };
 
+  const notifications = [
+    {
+      title: "Адрес",
+      description: item.address,
+    },
+    {
+      title: "Широта",
+      description: item.latitude,
+    },
+    {
+      title: "Долгота",
+      description: item.longitude,
+    },
+  ];
+
   return (
-    <button
-      type="button"
-      onClick={handleClick}
-      className="hover:opacity-2xl flex grow cursor-pointer flex-col gap-y-2 rounded-2xl bg-[#c4d1d7] p-4 duration-300"
-    >
-      <h3 className="w-full overflow-hidden text-ellipsis text-center text-2xl uppercase">
-        {item.label}
-      </h3>
-      <p className="w-full overflow-hidden text-ellipsis text-left text-xl">
-        {item.address}
-      </p>
-      <ul className="mt-auto flex w-full flex-col gap-y-2">
-        <li className="flex justify-between gap-x-2 text-sm">
-          <span>широта:</span>
-          <span>{item.latitude}</span>
-        </li>
-        <li className="flex justify-between gap-x-2 text-sm">
-          <span>долгота:</span>
-          <span>{item.longitude}</span>
-        </li>
-      </ul>
+    <button type="button" onClick={handleClick} className="grow">
+      <Card className="h-full">
+        <CardHeader>
+          <CardTitle className="line-clamp-1 text-left">{item.label}</CardTitle>
+          {/* <CardDescription className="line-clamp-1 text-left">
+            {item.description}
+          </CardDescription> */}
+        </CardHeader>
+        <CardContent>
+          <div>
+            {notifications.map((notification, index) => (
+              <div
+                key={index}
+                className="grid grid-cols-[25px_1fr] justify-items-start pb-4 text-left last:mb-0 last:pb-0"
+              >
+                <span className="flex h-2 w-2 translate-y-1 rounded-full bg-sky-500" />
+                <div className="space-y-1">
+                  <p className="text-sm font-medium leading-none">
+                    {notification.title}
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    {notification.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
     </button>
   );
 };

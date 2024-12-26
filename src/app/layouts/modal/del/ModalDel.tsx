@@ -1,9 +1,14 @@
 import { FC } from "react";
 import Modal from "../template/Modal";
-import clsx from "clsx";
 import { delGeoItem } from "@/app/store/geo/modalSlice";
 import { clearAllStep } from "@/app/store/modal/modalSlice";
 import { useAppDispatch, useAppSelector } from "@/entities/hooks/hook";
+import {
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 
 const ModalDel: FC = () => {
   const {
@@ -13,18 +18,21 @@ const ModalDel: FC = () => {
 
   return (
     <Modal>
-      <div className={clsx(style.modal__form)}>
-        <h2 className={clsx(style.modal__title)}>Удалить маркер?</h2>
-        <button
-          className={clsx(style.modal__button, "form__button")}
+      <DialogHeader>
+        <DialogTitle>Удалить маркер?</DialogTitle>
+      </DialogHeader>
+
+      <DialogFooter>
+        <Button
+          type="button"
           onClick={() => {
             dispatch(delGeoItem(del.delId));
             dispatch(clearAllStep());
           }}
         >
-          удалить
-        </button>
-      </div>
+          Удалить
+        </Button>
+      </DialogFooter>
     </Modal>
   );
 };

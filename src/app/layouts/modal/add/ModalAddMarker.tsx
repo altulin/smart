@@ -11,64 +11,66 @@ import { useLazyGetGeoQuery } from "@/app/store/rtk/geo";
 import Field from "@/shared/assets/UI/form_hook/hoc/Field";
 import { validateSchema } from "@/shared/assets/UI/form_hook/utils/validation/yupSchemaCreator";
 import { useAppDispatch, useAppSelector } from "@/entities/hooks/hook";
+import { Button } from "@/components/ui/button";
+import { Form } from "@/components/ui/form";
+import { makeInitialValues } from "@/shared/assets/UI/form_hook/utils/initialValues";
+import {
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 const ModalAddMarker: FC = () => {
-  const { ...methods } = useForm({
-    defaultValues: {},
+  const form = useForm({
+    defaultValues: makeInitialValues(addFields),
     resolver: yupResolver(validateSchema(addFields)),
     mode: "onChange",
   });
-  const { reset, handleSubmit } = methods;
+
   const { modalState } = useAppSelector((state) => state.modal);
   const [getGeo] = useLazyGetGeoQuery();
 
   useEffect(() => {
+    if (!modalState?.add?.data) return;
+
     getGeo({ geocode: modalState?.add?.data })
       .unwrap()
       .then((res) => {
-        reset({ ...res });
+        form.reset({ ...res });
       });
-  }, [getGeo, modalState?.add?.data, reset]);
+  }, [form, getGeo, modalState?.add?.data]);
 
   const dispatch = useAppDispatch();
 
   const onSubmit: SubmitHandler<IGeoItem> = (data) => {
     dispatch(addGeoItem({ ...data, id: Math.floor(Math.random() * 100) + 1 }));
-    reset();
+    form.reset();
     dispatch(clearAllStep());
   };
 
   return (
     <Modal>
-      <div className={""}>
-        <h2
-          className={
-            "mb-4 text-center text-3xl font-semibold uppercase leading-tight md:text-4xl"
-          }
+      <DialogHeader>
+        <DialogTitle>Добавить маркер</DialogTitle>
+      </DialogHeader>
+
+      <Form {...form}>
+        <form
+          id="add_form"
+          className={clsx("flex flex-col gap-y-4")}
+          onSubmit={form.handleSubmit(onSubmit)}
         >
-          Добавить маркер
-        </h2>
+          {addFields.map((field) => (
+            <Field key={field.name} {...field} />
+          ))}
+        </form>
+      </Form>
 
-        <FormProvider {...methods}>
-          <form
-            className={clsx("flex flex-col gap-y-4")}
-            onSubmit={handleSubmit(onSubmit)}
-          >
-            {addFields.map((field) => (
-              <Field key={field.name} {...field} />
-            ))}
-
-            <button
-              className={
-                "rounded-md border bg-[#c4d1d7] px-3 py-4 text-center text-2xl"
-              }
-              type="submit"
-            >
-              Добавить
-            </button>
-          </form>
-        </FormProvider>
-      </div>
+      <DialogFooter>
+        <Button form="add_form" type="submit">
+          Добавить
+        </Button>
+      </DialogFooter>
     </Modal>
   );
 };

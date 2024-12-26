@@ -5,8 +5,6 @@ import { ITextInput } from "@/UI/form_hook/utils/types";
 export const makeInitialValues = (fields: ITextInput[]) => {
   const object: Record<string, string | number | boolean | [] | any> = {};
 
-  console.log(fields);
-
   fields.forEach((item) => {
     const { init_value } = item;
 
