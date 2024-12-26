@@ -4,7 +4,9 @@
 
 ### node v20.12.2
 
-### Разработка велась в ветке `develop`
+### Разработка велась в ветках `develop` и `tailwindcss`
+
+#### Технологии: React, TypeScript, Redux, RTK Query, TailwindCss, Shadcn UI, Feature-Sliced Design (FSD)
 
 ### Команда для разработки `npm run dev`
 
